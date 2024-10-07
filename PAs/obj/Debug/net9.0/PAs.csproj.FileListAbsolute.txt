@@ -1,0 +1,5 @@
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\obj\Debug\net9.0\PAs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\obj\Debug\net9.0\PAs.AssemblyInfoInputs.cache
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\obj\Debug\net9.0\PAs.AssemblyInfo.cs
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\obj\Debug\net9.0\PAs.csproj.CoreCompileInputs.cache
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\obj\Debug\net9.0\PAs.sourcelink.json

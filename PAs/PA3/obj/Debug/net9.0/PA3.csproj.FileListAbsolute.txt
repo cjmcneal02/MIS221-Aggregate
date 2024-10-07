@@ -1,0 +1,15 @@
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\PA3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\PA3.AssemblyInfoInputs.cache
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\PA3.AssemblyInfo.cs
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\PA3.csproj.CoreCompileInputs.cache
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\PA3.sourcelink.json
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\bin\Debug\net9.0\PA3.exe
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\bin\Debug\net9.0\PA3.deps.json
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\bin\Debug\net9.0\PA3.runtimeconfig.json
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\bin\Debug\net9.0\PA3.dll
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\bin\Debug\net9.0\PA3.pdb
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\PA3.dll
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\refint\PA3.dll
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\PA3.pdb
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\PA3.genruntimeconfig.cache
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\PAs\PA3\obj\Debug\net9.0\ref\PA3.dll
