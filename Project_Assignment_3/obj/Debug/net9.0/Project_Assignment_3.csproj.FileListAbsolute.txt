@@ -1,0 +1,15 @@
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\bin\Debug\net9.0\Project_Assignment_3.exe
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\bin\Debug\net9.0\Project_Assignment_3.deps.json
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\bin\Debug\net9.0\Project_Assignment_3.runtimeconfig.json
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\bin\Debug\net9.0\Project_Assignment_3.dll
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\bin\Debug\net9.0\Project_Assignment_3.pdb
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\Project_Assignment_3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\Project_Assignment_3.AssemblyInfoInputs.cache
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\Project_Assignment_3.AssemblyInfo.cs
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\Project_Assignment_3.csproj.CoreCompileInputs.cache
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\Project_Assignment_3.sourcelink.json
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\Project_Assignment_3.dll
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\refint\Project_Assignment_3.dll
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\Project_Assignment_3.pdb
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\Project_Assignment_3.genruntimeconfig.cache
+C:\Users\pappa\Documents\source\MIS_221\MIS221-Aggregate\MIS221-Aggregate\Project_Assignment_3\obj\Debug\net9.0\ref\Project_Assignment_3.dll
