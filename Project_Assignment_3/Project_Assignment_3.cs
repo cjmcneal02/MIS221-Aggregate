@@ -14,8 +14,8 @@ while (true)
     Console.WriteLine("4. Show Current Tokens");
     Console.WriteLine("5. Exit");
 
-    string input = Console.ReadLine();
-    switch (gameChoice)
+    string userInput = Console.ReadLine();
+    switch (userInput)
     {
         case "1":
             PlaySlots();
