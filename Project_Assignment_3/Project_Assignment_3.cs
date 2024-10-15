@@ -8,7 +8,7 @@ class CatCade
     static Random random = new Random(); 
     static List<string> hidingSpots = new List<string> { "plant", "couch", "fridge", "balcony", "closet", "bathtub", "sink"};
     
-    static void CatCadeMenu(string[] args)
+    static void Main(string[] args)
     {
         while(true)
         {
