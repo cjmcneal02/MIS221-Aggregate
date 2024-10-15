@@ -2,7 +2,7 @@
 using System;
 class CatCade
 {
-    static int currentTokens = 10;
+  static int currentTokens = 10;
     static int slotTokens = 0;
     static int hideAndSeekTokens = 0;
     static Random random = new Random(); 
@@ -16,7 +16,7 @@ class CatCade
             Console.WriteLine("           CatCade               ");
             Console.WriteLine("=================================");
             Console.WriteLine("1. Play Slot Machine");
-            Console.WriteLine("2. Play Hide 'n Seek");
+            Console.WriteLine("2. Play Hide and Seek");
             Console.WriteLine("3. Play Blackjack");
             Console.WriteLine("4. See Current Tokens");
             Console.WriteLine("5. Exit");
@@ -52,21 +52,65 @@ class CatCade
             }
         }
     }
+
+    private static void PromptToContinue()
+    {
+        Console.WriteLine("Press Enter to return to Catcade Menu");
+        Console.ReadLine();
+    }
+
+    private static void PlayHideAndSeek()
+    {
+        throw new NotImplementedException();
+    }
+
+    private static void PlaySlots()
+    {
+        throw new NotImplementedException();
+    }
+
     static void PlayBlackJack()
     {
-    //PlayBlackJack code
-    }
-    static void PlaySlots()
-    {
-    //slot code
-    }
-    static void PlayHideAndSeek()
-    {
-    //hide and seek code
-    }
-static void PromptToContinue()
-{
-    Console.WriteLine("Press Enter to return to Catcade Menu");
-    Console.ReadLine();
+        {
+        Console.WriteLine("Welcome to BlackJack!");
+        while (true)
+        {
+            int playerScore = 0;
+            int dealerScore = random.Next(16, 23);
+            bool playerStand = false;
+            while (!playerStand && playerScore < 21)
+            {
+                int newCard = random.Next(1, 11);
+                playerScore += newCard;
+                Console.WriteLine($"You drew a {newCard}. Your total score is {playerScore}");
+                if (playerScore < 21)
+                {
+                    Console.WriteLine("Do you want to hit or stand?");
+                    string input = Console.ReadLine().ToLower();
+                    if (input == "stand")
+                    {
+                        playerStand = true;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Dealer's Score: {dealerScore}");
+            if (playerScore > 21)
+            {
+                Console.WriteLine("Bust!");
+            }
+            else if (dealerScore > 21 || playerScore > dealerScore)
+            {
+                Console.WriteLine("You win!");
+                currentTokens += 5;
+            }
+            else
+            {
+                Console.WriteLine("Dealer wins!");
+                currentTokens -= 3;
+            }
+            break;
+        }
+        }
+     }
 }
- }
