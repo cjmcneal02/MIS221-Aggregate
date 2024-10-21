@@ -70,47 +70,69 @@ class CatCade
     }
 
     static void PlayBlackJack()
+{
+    Console.WriteLine("Welcome to BlackJack!");
+
+    while (true)
     {
+        int playerScore = 0;  // Player's score starts at 0
+        int dealerScore = random.Next(16, 23);  // Dealer's score is generated once at the start
+        bool playerStand = false;  // Flag to check if player chooses to stand
+
+        // This loop continues as long as the player hasn't chosen to stand and their score is below 21
+        while (!playerStand && playerScore < 21)
         {
-        Console.WriteLine("Welcome to BlackJack!");
-        while (true)
-        {
-            int playerScore = 0;
-            int dealerScore = random.Next(16, 23);
-            bool playerStand = false;
-            while (!playerStand && playerScore < 21)
+            int newCard = random.Next(1, 11);  // Draw a card with a random value between 1 and 10
+            playerScore += newCard;  // Add the value of the new card to the player's total score
+            Console.WriteLine($"You drew a {newCard}. Your total score is {playerScore}");
+
+            // If the player's score is less than 21, ask if they want to hit or stand
+            if (playerScore < 21)
             {
-                int newCard = random.Next(1, 11);
-                playerScore += newCard;
-                Console.WriteLine($"You drew a {newCard}. Your total score is {playerScore}");
-                if (playerScore < 21)
+                Console.WriteLine("Do you want to hit or stand?");
+                string input = Console.ReadLine().ToLower();  // Read and convert input to lowercase for consistency
+
+                if (input == "hit")
                 {
-                    Console.WriteLine("Do you want to hit or stand?");
-                    string input = Console.ReadLine().ToLower();
-                    if (input == "stand")
-                    {
-                        playerStand = true;
-                    }
+                    // If the player chooses "hit", the loop continues and a new card is drawn on the next iteration
+                    continue;  // Move to the next iteration of the loop to draw another card
+                }
+                else if (input == "stand")
+                {
+                    // If the player chooses "stand", set playerStand to true to stop the card drawing loop
+                    playerStand = true;
+                }
+                else
+                {
+                    // If the input is anything other than "hit" or "stand", prompt for valid input again
+                    Console.WriteLine("Invalid input. Please type 'hit' or 'stand'.");
                 }
             }
+        }
 
-            Console.WriteLine($"Dealer's Score: {dealerScore}");
-            if (playerScore > 21)
-            {
-                Console.WriteLine("Bust!");
-            }
-            else if (dealerScore > 21 || playerScore > dealerScore)
-            {
-                Console.WriteLine("You win!");
-                currentTokens += 5;
-            }
-            else
-            {
-                Console.WriteLine("Dealer wins!");
-                currentTokens -= 3;
-            }
-            break;
+        // Once the player stands or busts, reveal the dealer's score and determine the winner
+        Console.WriteLine($"Dealer's Score: {dealerScore}");
+
+        // Check results:
+        if (playerScore > 21)
+        {
+            Console.WriteLine("Bust! You lose.");
         }
+        else if (dealerScore > 21 || playerScore > dealerScore)
+        {
+            // Player wins if the dealer busts or the player's score is higher
+            Console.WriteLine("You win!");
+            currentTokens += 5;  // Player earns 5 tokens
         }
-     }
+        else
+        {
+            // Dealer wins if their score is higher and neither player nor dealer busts
+            Console.WriteLine("Dealer wins!");
+            currentTokens -= 3;  // Player loses 3 tokens
+        }
+
+        // End the game after one round
+        break;
+    }
+}
 }
