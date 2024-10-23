@@ -49,6 +49,9 @@ class CatCade
             {
                 Console.WriteLine("Congratulations. You have enough tokens to adopt a cat!");
                 break; 
+                //consider making a prize-picking menu where player can choose different cats for certain amounts of tokens
+                //display the cat using symbols depending on what they choose
+                //print remaining tokens, and offer to return to catcade menu or quit 
             }
         }
     }
