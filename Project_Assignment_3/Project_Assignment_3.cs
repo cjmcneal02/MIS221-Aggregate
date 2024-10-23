@@ -64,15 +64,43 @@ class CatCade
 
     private static void PlayHideAndSeek()
     {
-        throw new NotImplementedException();
+        //hide and seek method
     }
 
     private static void PlaySlots()
+    {if (currentTokens<1)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("You need more tokens to use the Slot Machine....");
+        PromptToContinue(); //prompt to continue and return to main menue
+        return; 
     }
+    Console.WriteLine("Spin the Slot Machine!");
+    Console.WriteLine("Each spin costs 1 token. Would You Like to play?(Yes or No): ");
+    string slotInput = Console.ReadLine().ToLower().Trim();
+    switch(slotInput)
+    {
+        case "yes":
+        SpinMachine();
+        break;
+        case "no":
+        PromptToContinue();
+        return; 
 
-    static void PlayBlackJack()
+    
+    }
+   
+    }
+static void SpinMachine()
+{
+    currentTokens -= 1;
+    string[]slotSymbols = {"【ᓚ₍ ^. .^₎】","【ฅ^•⩊•^ฅ】", "【≽ܫ≼】", "【≽^•⩊•^≼】","【/ᐠ – ˕ -マ】"}; //possible outcomes
+    string  slotOne = slotSymbols[random.Next(slotSymbols.Length)]; //choose random outcomes given slot possibilities
+    string slotTwo = slotSymbols[random.Next(slotSymbols.Length)];
+    string slotThree = slotSymbols[random.Next(slotSymbols.Length)];
+    
+    Console.WriteLine($"|{slotOne}|{slotTwo}|{slotThree}");//results of spin
+} //end slots
+    static void PlayBlackJack()  //blackjack method begin
 {
     Console.WriteLine("Welcome to BlackJack!");
 
@@ -138,4 +166,5 @@ class CatCade
         break;
     }
 }
-}
+}//main end 
+
