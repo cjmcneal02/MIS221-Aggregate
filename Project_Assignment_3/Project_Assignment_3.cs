@@ -49,7 +49,7 @@ class CatCade
             {
                 Console.WriteLine("Congratulations. You have enough tokens to adopt a cat!");
                 break; 
-                //consider making a prize-picking menu where player can choose different cats for certain amounts of tokens
+                //consider making a prize-picking 8menu where player can choose different cats for certain amounts of tokens
                 //display the cat using symbols depending on what they choose
                 //print remaining tokens, and offer to return to catcade menu or quit 
             }
@@ -93,14 +93,14 @@ class CatCade
             if (playerScore < 21)
             {
                 Console.WriteLine("Do you want to hit or stand?");
-                string input = Console.ReadLine().ToLower();  // Read and convert input to lowercase for consistency
+                string blackJackInput = Console.ReadLine().ToLower().Trim();  // Read and convert input to lowercase for consistency
 
-                if (input == "hit")
+                if (blackJackInput == "hit")
                 {
                     // If the player chooses "hit", the loop continues and a new card is drawn on the next iteration
                     continue;  // Move to the next iteration of the loop to draw another card
                 }
-                else if (input == "stand")
+                else if (blackJackInput == "stand")
                 {
                     // If the player chooses "stand", set playerStand to true to stop the card drawing loop
                     playerStand = true;
