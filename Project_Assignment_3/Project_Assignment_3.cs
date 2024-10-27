@@ -85,8 +85,6 @@ class CatCade
         case "no":
         PromptToContinue();
         return; 
-
-    
     }
    
     }
