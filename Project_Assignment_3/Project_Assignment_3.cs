@@ -115,7 +115,7 @@ class CatCade
             else
             {
                 Console.WriteLine("Out of Guesses. The cat was hiding in the "+ catLocation+".");
-
+                hideAndSeekTokens = 0; //reset tokens to zero if player runs out of guesses
             }
 
         }
