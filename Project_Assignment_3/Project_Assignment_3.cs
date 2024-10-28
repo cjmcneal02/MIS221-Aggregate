@@ -43,6 +43,7 @@ class CatCade
                 return;
                 default: 
                 Console.WriteLine("Invalid input. Pleae enter 1, 2, 3, 4, or 5.");
+                Console.Clear();
                 break;
             }
             if (currentTokens >= 20)
@@ -60,6 +61,7 @@ class CatCade
     {
         Console.WriteLine("Press Enter to return to Catcade Menu");
         Console.ReadLine();
+        Console.Clear();
     }
 
     private static void PlayHideAndSeek()
@@ -97,6 +99,24 @@ static void SpinMachine()
     string slotThree = slotSymbols[random.Next(slotSymbols.Length)];
     
     Console.WriteLine($"|{slotOne}|{slotTwo}|{slotThree}");//results of spin
+
+    if (slotOne==slotTwo && slotTwo==slotThree)
+    {
+        Console.WriteLine("JACKPOT!");
+        currentTokens += 10;
+    }
+    else if(slotOne == slotTwo||slotTwo ==slotThree||slotOne==slotThree)
+    {
+        Console.WriteLine("You win five tokens!");
+        currentTokens +=5;
+
+    }
+    else 
+    {
+        Console.WriteLine("no match, maybe next time!");
+    }
+    PromptToContinue();
+    
 } //end slots
     static void PlayBlackJack()  //blackjack method begin
 {
