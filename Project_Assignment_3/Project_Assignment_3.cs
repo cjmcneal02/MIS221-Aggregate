@@ -5,6 +5,8 @@ class CatCade
   static int currentTokens = 10;
     static int slotTokens = 0;
     static int hideAndSeekTokens = 0;
+    static int blackjackTokens = 0; 
+    static int maxTokensPerGame = 10;
     static Random random = new Random(); 
     static List<string> hidingSpots = new List<string> { "plant", "couch", "fridge", "balcony", "closet", "bathtub", "sink"};
     
@@ -92,29 +94,75 @@ class CatCade
     }
 static void SpinMachine()
 {
-    currentTokens -= 1;
-    string[]slotSymbols = {"【ᓚ₍ ^. .^₎】","【ฅ^•⩊•^ฅ】", "【≽ܫ≼】", "【≽^•⩊•^≼】","【/ᐠ – ˕ -マ】"}; //possible outcomes
+
+    Console.Write("How many tokens would you like to wager?: ");
+
+    if (!int.TryParse(Console.ReadLine(), out int wager) || wager <= 0) //defines wager; ensures wager is a positive number
+    {
+        Console.WriteLine("Invalid wager. Return to menu");
+        PromptToContinue ();
+        return;
+
+    }
+    if (wager>currentTokens) //check if wager is valid
+    {
+        Console.WriteLine("You don't have enough tokens for that wager. Returning to menu.");
+        return;
+
+    }
+    currentTokens -= wager;
+    string[] slotSymbols = {" =^.^=  ","【ᓚ₍ ^. .^₎】","【ฅ^•⩊•^ฅ】", "【≽ܫ≼】", "【≽^•⩊•^≼】","【/ᐠ – ˕ -マ】"}; //possible outcomes
     string  slotOne = slotSymbols[random.Next(slotSymbols.Length)]; //choose random outcomes given slot possibilities
     string slotTwo = slotSymbols[random.Next(slotSymbols.Length)];
     string slotThree = slotSymbols[random.Next(slotSymbols.Length)];
     
     Console.WriteLine($"|{slotOne}|{slotTwo}|{slotThree}");//results of spin
 
+    int matchCount = 0;
+    //need to determine tokens won based on matching slots
     if (slotOne==slotTwo && slotTwo==slotThree)
     {
-        Console.WriteLine("JACKPOT!");
-        currentTokens += 10;
+        matchCount = 3; //three grand prize symbols spun
     }
     else if(slotOne == slotTwo||slotTwo ==slotThree||slotOne==slotThree)
     {
-        Console.WriteLine("You win five tokens!");
-        currentTokens +=5;
+        matchCount =2; //two grand prize symbols spun
 
     }
-    else 
+    else if(slotOne == "=^.^= "|| slotTwo == "=^.^= " ||slotThree =="=^.^= ")
     {
-        Console.WriteLine("no match, maybe next time!");
+        matchCount = 1; //one grand prize symbol spun
     }
+    int earnedTokens = 0;
+    switch (matchCount)
+    {
+        case 3:
+        Console.WriteLine("Jackpot! You've tripled your wager!");
+        earnedTokens =  wager*3; //jackpot = triple the wager as reward
+        Console.WriteLine("You also won free cat food!"); //catfood prize
+        break;
+        case 2: 
+        Console.WriteLine("You spun two matching symbols! You've doubled your wager!");
+        earnedTokens=wager * 2;
+        break;
+        case 1:
+        Console.WriteLine(" You got one Grand Prize Symbol...You're wager has been returned");
+        earnedTokens = wager; //return wager by adding back
+        break;
+        default:
+        Console.WriteLine("No matches spun...Better Luck next time!");
+        break;
+    }
+    if(slotTokens + earnedTokens<+ maxTokensPerGame)
+    {
+        slotTokens+=earnedTokens;
+        currentTokens+=earnedTokens;
+    }
+    else
+    {
+        Console.WriteLine("max tokens reached for slots");
+    }
+
     PromptToContinue();
     
 } //end slots
@@ -161,7 +209,7 @@ static void SpinMachine()
 
         // Once the player stands or busts, reveal the dealer's score and determine the winner
         Console.WriteLine($"Dealer's Score: {dealerScore}");
-
+        int earnedTokens = 0;
         // Check results:
         if (playerScore > 21)
         {
@@ -171,14 +219,29 @@ static void SpinMachine()
         {
             // Player wins if the dealer busts or the player's score is higher
             Console.WriteLine("You win!");
-            currentTokens += 5;  // Player earns 5 tokens
+            earnedTokens += 5;  // Player earns 5 tokens
         }
         else
         {
             // Dealer wins if their score is higher and neither player nor dealer busts
             Console.WriteLine("Dealer wins!");
-            currentTokens -= 3;  // Player loses 3 tokens
+            earnedTokens -= 3;  // Player loses 3 tokens
         }
+        
+        if (earnedTokens > 0 && blackjackTokens + earnedTokens<= maxTokensPerGame)
+        {
+            blackjackTokens +=earnedTokens;
+            currentTokens += earnedTokens;
+        }
+        else if(earnedTokens<=0)
+        {
+            currentTokens+=earnedTokens;
+        }
+        else
+        {
+             Console.WriteLine("max tokens reached for blackjack");
+        }
+        PromptToContinue();        
 
         // End the game after one round
         break;
