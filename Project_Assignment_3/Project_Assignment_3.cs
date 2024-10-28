@@ -8,8 +8,6 @@ class CatCade
     static int blackjackTokens = 0; 
     static int maxTokensPerGame = 10;
     static Random random = new Random(); 
-    static List<string> hidingSpots = new List<string> { "plant", "couch", "fridge", "balcony", "closet", "bathtub", "sink"};
-    
     static void Main(string[] args)
     {
         while(true)
@@ -68,7 +66,61 @@ class CatCade
 
     private static void PlayHideAndSeek()
     {
-        //hide and seek method
+        Console.WriteLine("Time to play hide and seek!");
+        if (hideAndSeekTokens>=10)
+        {
+            Console.WriteLine("max tokens reached for hide and seek");
+            PromptToContinue();
+            return;
+        }
+        string []hidingSpots = { "plant", "couch", "fridge", "balcony", "closet", "bathtub", "sink"};
+        string catLocation = hidingSpots[random.Next(hidingSpots.Length)];
+        string previousGuess = null;//store previous guess for comparison
+        int maxGuesses = 4;
+
+        for (int attempt = 1; attempt <= maxGuesses; attempt++)
+        {
+            Console.WriteLine("Guess where the cat is: ");
+            string userGuess = Console.ReadLine().ToLower().Trim();
+            if (userGuess ==catLocation) //check if user guess correctly
+            {
+                Console.WriteLine("You found the cat!");
+                hideAndSeekTokens+=3;
+                currentTokens += 3;
+                return;
+            }
+            if (previousGuess == null) //feedback based on comparison
+            {
+                Console.WriteLine("room temperture, make your 1st guess!");
+
+            }
+            else
+            {
+                if (string.Compare(userGuess,catLocation) < 0 && string.Compare(previousGuess,catLocation)<0||
+                string.Compare(userGuess,catLocation) > 0 && string.Compare(previousGuess,catLocation)>0)
+                {
+                    Console.WriteLine("hotter");
+                }
+                else{
+                    Console.WriteLine("Colder");
+                }
+
+            }
+            previousGuess = userGuess; //update the previous guess
+            if (attempt < maxGuesses) //tell user remaining attempts
+            {
+                Console.WriteLine($"You have {maxGuesses-attempt} guesses left.");
+
+            }
+            else
+            {
+                Console.WriteLine("Out of Guesses. The cat was hiding in the "+ catLocation+".");
+
+            }
+
+        }
+        PromptToContinue();
+        
     }
 
     private static void PlaySlots()
@@ -116,7 +168,7 @@ static void SpinMachine()
     string slotTwo = slotSymbols[random.Next(slotSymbols.Length)];
     string slotThree = slotSymbols[random.Next(slotSymbols.Length)];
     
-    Console.WriteLine($"|{slotOne}|{slotTwo}|{slotThree}");//results of spin
+    Console.WriteLine($"|{slotOne}|{slotTwo}|{slotThree}|");//results of spin
 
     int matchCount = 0;
     //need to determine tokens won based on matching slots
