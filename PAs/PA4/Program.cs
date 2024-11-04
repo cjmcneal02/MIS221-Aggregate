@@ -88,6 +88,7 @@ static void DecodeFile()
         File.WriteAllText(outputFile,decodedContent);
         Console.WriteLine("File decoded");
 
+
     }
     catch (Exception ex)
     {
@@ -98,7 +99,22 @@ static void DecodeFile()
 
 static void WordCount()
 {
+    Console.Write("Enter the file you wish to check the count of: ");
+    string fileName = Console.ReadLine();
 
+    try
+    {
+        string content = File.ReadAllText(fileName);
+        int wordCount = content.Split(new[]{' ','\t','\n','\r'},StringSplitOptions.RemoveEmptyEntries).Length;
+        Console.WriteLine($"The file contains {wordCount} words.");
+        
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error: {ex.Message}");
+
+    }
+    PromptToContinue();
 }
 static string Rot13(string input) //rot13 string
 {
