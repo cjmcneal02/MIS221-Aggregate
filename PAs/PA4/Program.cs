@@ -28,6 +28,7 @@ class Program
                 WordCount();
                 break;
                 case "4":
+                exit = true;
                 Console.WriteLine("Now exiting Program...");
                 PromptToContinue();
                 return;
@@ -53,12 +54,46 @@ class Program
 
 static void EncodeFile()
 {
+    Console.Write("Enter the file to encode: ");
+    string inputFile = Console.ReadLine();
+    Console.Write ("Enter the file name to save the encoded file as: ");
+    string outputFile = Console.ReadLine();
+
+    try
+    {
+        string content = File.ReadAllText(inputFile);
+        string encodedContent =  Rot13(content);
+        File.WriteAllText(outputFile,encodedContent );
+        Console.WriteLine("file encoded successfully.");
+        
+    }
+    catch(Exception ex)
+    {
+        Console.WriteLine($"error: {ex.Message}");
+    }
+    PromptToContinue();
 
 }
 
 static void DecodeFile()
 {
+    Console.Write("Enter a file to decode: ");
+    string inputFile = Console.ReadLine();
+    Console.Write(" Enter a file name to save the decoded file as: ");
+    string outputFile = Console.ReadLine();
+    try
+    {
+        string encodedContent = File.ReadAllText(inputFile);
+        string decodedContent = Rot13(encodedContent);
+        File.WriteAllText(outputFile,decodedContent);
+        Console.WriteLine("File decoded");
 
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error: {ex.Message}");
+    }
+    PromptToContinue();
 }
 
 static void WordCount()
