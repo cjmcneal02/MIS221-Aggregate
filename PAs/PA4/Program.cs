@@ -65,5 +65,37 @@ static void WordCount()
 {
 
 }
+static string Rot13(string input) //rot13 string
+{
+char[] array = input.ToCharArray();
+for (int i = 0; i < array.Length; i++)
+{
+    int number = (int)array[i];
 
+    if(number>='A' && number <= 'Z') //for uppercase letter inputs
+    {
+        if (number>'M')
+        {
+            number -=13;
+        }
+        else 
+        {
+            number += 13;
+        }
+    }
+    else if(number >= 'a' && number <= 'z') //for lowercase letter inputs
+    {
+        if (number >='m')
+        {
+            number -= 13;
+        }
+        else
+        {
+            number += 13;
+        }
+    }
+    array [i] = (char)number;
+}
+return new string(array);
+}
 } // end program
