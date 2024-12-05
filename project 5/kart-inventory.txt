@@ -1,0 +1,10 @@
+1#Monster#medium#True
+2#Monster#large#True
+3#Drifter#small#True
+4#Speedster#small#True
+5#Racer#large#True
+6#Monster#medium#True
+7#Speedster#medium#True
+8#Monster#large#True
+9#Roadster#small#True
+10#Racer#large#True
