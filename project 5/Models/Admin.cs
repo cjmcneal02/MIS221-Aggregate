@@ -1,19 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
+using System.IO;
+using project_5.Models;
 
 namespace project_5
 {
-    public class Admin
+    public class AdminControl
     {
         private List<Kart> _karts = new List<Kart>();
         private readonly string _filePath = "kart-inventory.txt";
         private Random _random = new Random();
 
-        public Admin()
+        public AdminControl()
         {
             LoadKartsFromFile();
         }

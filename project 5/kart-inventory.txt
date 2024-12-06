@@ -1,4 +1,4 @@
-1#Monster#medium#True
+1#black#sma#False
 2#Monster#large#True
 3#Drifter#small#True
 4#Speedster#small#True

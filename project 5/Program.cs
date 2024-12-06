@@ -6,8 +6,10 @@ namespace project_5
     {
         public static void Main(string[] args)
         {
-             Admin admin = new Admin ();
+             AdminControl admin = new AdminControl ();
              admin.AdminMenu();
+             PlayerControl player = new PlayerControl();
+             player.PlayerMenu();
 
         }
        

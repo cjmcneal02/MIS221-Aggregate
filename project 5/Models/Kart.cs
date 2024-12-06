@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace project_5
+namespace project_5.Models
 {
     public class Kart
     {
