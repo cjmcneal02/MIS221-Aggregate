@@ -1,0 +1,11 @@
+1#Racer#Small#True
+2#Blitz#Large#True
+3#Thunder#Large#True
+4#Blitz#Small#True
+5#Thunder#Large#True
+6#Speedster#Large#True
+7#Racer#Medium#True
+8#Flash#Medium#True
+9#Thunder#Large#True
+10#Racer#Small#True
+11#Thunder#Large#True
