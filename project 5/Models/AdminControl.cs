@@ -50,6 +50,9 @@ namespace project_5
                 }
             }
          }
+         public List<Kart> GetKarts(){
+            return _karts;
+         }
          public void RemoveKart(int id)
          {
             var kart = _karts.Find(k => k.Id == id); 
@@ -135,17 +138,6 @@ namespace project_5
                 }
             } while (choice != 6);
         }
-
-        
-        public class Kart{
-            public int Id {get;set;}
-            public string Name {get;set;}
-            public string Size {get;set;}
-            public bool IsAvailable {get;set;}
-        }
-
-   
-   
    
    
    

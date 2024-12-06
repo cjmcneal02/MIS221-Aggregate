@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using project_5.Models;
 
@@ -11,11 +12,14 @@ namespace project_5
         private readonly string _filePath = "kart-inventory.txt";
         private readonly string _resultsFilePath = "race-results.txt";
         private Random _random = new Random();
-        public PlayerControl(){
+        private List<string> _tracks = new List<string>{
+            "Figure-8 Circuit", "Yoshi Falls", "Cheep Cheep Beach", "Luigi's Mansion", "Desert Hills", "Delfino Square", "Waluigi Pinball", "Shroom Ridge", "DK Pass", "Tick-Tock Clock", "Mario Circuit", "Airship Fortress", "Wario Stadium", "Peach Gardens", "Bowser Castle", "Rainbow Road"
+        };
+        public PlayerControl(List<Kart> karts){
             _karts = _karts;
         }
         public void ViewAvailableKarts(){
-            Console.WriteLine("available karts: ");
+            Console.WriteLine("Available karts: ");
             foreach (var kart in _karts){
                 if(kart.IsAvailable){
                     Console.WriteLine($"ID: {kart.Id}, Name: {kart.Name}, Size: {kart.Size} is available"); 
@@ -26,25 +30,38 @@ namespace project_5
         ViewAvailableKarts();
         Console.Write("enter a kart ID to race: ");
         int kartId = int.Parse(Console.ReadLine());
-        Console.Write("enter a track name: ");
-        string trackName = Console.ReadLine();
-        
-
+        Console.Write("Select a track to race on: ");
+        for(int i = 0; i < _tracks.Count;i++){
+            Console.WriteLine($"{i+1}. {_tracks[i]}");
+        }
+        Console.Write("Enter a track number: ");
+        int trackChoice = int.Parse(Console.ReadLine());
+        if (trackChoice <1 || trackChoice > _tracks.Count){
+            Console.WriteLine("invalid trackc choice.");\
+            return;
+        }
+        string trackName = _tracks[trackChoice -1];
         var kart = _karts.Find(k => k.Id == kartId && k.IsAvailable);
-        if(kart!=null){
-            kart.IsAvailable = false;
-            Console.WriteLine($"Kart '{kart.Name}' on track '{trackName}'...");
+        if (kart != null){
+            kart.IsAvailable = false; 
+            Console.WriteLine($"racing a kart '{kart.Name}' on track '{trackName}'..");
 
-            string result = $"{email} raced Kart '{kart.Name}' on track '{trackName}' and finished {_random.Next(1,12)}";
-            Console.WriteLine(result);
-
+            //simulate race result 
+            string interactionId = Guid.NewGuid().ToString();
+            DateTime raceDate = DateTime.Now;
+            int timeElapsed = _random.Next(30,300); //simulate time in seconds
+            string result = $"{interactionId}#{email}#{kart.Id}#{raceDate}#{timeElapsed}#{trackName}#No";
+            Console.WriteLine($"Race result: {result}");
+            //save results to file
             File.AppendAllText(_resultsFilePath, result + Environment.NewLine);
             kart.IsAvailable = true;
             SaveKartsToFile();
-
-
-        }else{
+            }else{
             Console.WriteLine( "kart not available");
+        }
+            
+
+        
         }
         }
         public void ViewRacedKarts(string email){
@@ -72,7 +89,7 @@ namespace project_5
             do{
                 Console.WriteLine("\nPlayerMenu");
                 Console.WriteLine("1. View Available Karts");
-                Console.WriteLine("Race a kart");
+                Console.WriteLine("2.Race a kart");
                 Console.WriteLine("3. View Raced Karts by email");
                 Console.WriteLine("4. Return a Kart to inventory");
                 Console.WriteLine("5. Exit");
