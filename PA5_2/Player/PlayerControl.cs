@@ -110,61 +110,105 @@ namespace PA5_2.Player
             }
         }
 
-        // Simulate racing karts
-        private void RaceKarts()
+       
+       
+    private void SaveRaceResult(string raceResult)
+{
+    try
+    {
+        File.AppendAllText("race-results.txt", raceResult + Environment.NewLine);
+        Console.WriteLine("Race result saved successfully.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error saving race result: {ex.Message}");
+    }
+} // Simulate racing karts
+public void DisplayRaceResults()
+{
+    if (!File.Exists("race-results.txt"))
+    {
+        Console.WriteLine("No race results available.");
+        return;
+    }
+
+    Console.WriteLine("\n--- Race Results ---");
+    var lines = File.ReadAllLines("race-results.txt");
+    foreach (var line in lines)
+    {
+        var parts = line.Split('#');
+        if (parts.Length == 7)
         {
-            if (_players.Count == 0)
-            {
-                Console.WriteLine("No players registered. Please register players first.");
-                return;
-            }
+            string playerName = parts[1].Split('@')[0]; // Extract the name before the '@' symbol
+            string kartName = parts[2]; // Kart ID (for simplicity, assuming it's readable here)
+            string track = parts[5];
+            string returned = parts[6] == "True" ? "has raced" : "is racing";
 
-            Console.WriteLine("\n--- Race Karts ---");
-            foreach (var identifier in _players)
-            {
-                Console.WriteLine($"\nPlayer: {identifier}");
-                ShowAvailableKarts();
-
-                Console.Write("Enter Kart ID to race: ");
-                if (!int.TryParse(Console.ReadLine(), out int kartId))
-                {
-                    Console.WriteLine("Invalid Kart ID. Skipping this player.");
-                    continue;
-                }
-
-                var kart = _karts.Find(k => k.Id == kartId && k.IsAvailable);
-                if (kart == null)
-                {
-                    Console.WriteLine("Kart not available or invalid Kart ID. Skipping this player.");
-                    continue;
-                }
-
-                kart.IsAvailable = false;
-
-                Console.WriteLine("\nSelect a track:");
-                for (int i = 0; i < _tracks.Count; i++)
-                {
-                    Console.WriteLine($"{i + 1}. {_tracks[i]}");
-                }
-
-                Console.Write("Enter track number: ");
-                if (!int.TryParse(Console.ReadLine(), out int trackChoice) || trackChoice < 1 || trackChoice > _tracks.Count)
-                {
-                    Console.WriteLine("Invalid track choice. Skipping this player.");
-                    kart.IsAvailable = true;
-                    continue;
-                }
-
-                string selectedTrack = _tracks[trackChoice - 1];
-
-                // Simulate race result
-                var raceTime = new Random().Next(30, 300); // Simulate time in seconds
-                Console.WriteLine($"Player {identifier} raced Kart '{kart.Name}' on track '{selectedTrack}' with a time of {raceTime} seconds.");
-
-                // After the race, make the kart available again
-                kart.IsAvailable = true;
-            }
+            Console.WriteLine($"{line}");
+            Console.WriteLine($"  • {playerName} {returned} the kart {kartName} on {track}");
         }
+    }
+}
+     private void RaceKarts()
+{
+    if (_players.Count == 0)
+    {
+        Console.WriteLine("No players registered. Please register players first.");
+        return;
+    }
+
+    Console.WriteLine("\n--- Race Karts ---");
+    foreach (var identifier in _players)
+    {
+        Console.WriteLine($"\nPlayer: {identifier}");
+        ShowAvailableKarts();
+
+        Console.Write("Enter Kart ID to race: ");
+        if (!int.TryParse(Console.ReadLine(), out int kartId))
+        {
+            Console.WriteLine("Invalid Kart ID. Skipping this player.");
+            continue;
+        }
+
+        var kart = _karts.Find(k => k.Id == kartId && k.IsAvailable);
+        if (kart == null)
+        {
+            Console.WriteLine("Kart not available or invalid Kart ID. Skipping this player.");
+            continue;
+        }
+
+        kart.IsAvailable = false;
+
+        Console.WriteLine("\nSelect a track:");
+        for (int i = 0; i < _tracks.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_tracks[i]}");
+        }
+
+        Console.Write("Enter track number: ");
+        if (!int.TryParse(Console.ReadLine(), out int trackChoice) || trackChoice < 1 || trackChoice > _tracks.Count)
+        {
+            Console.WriteLine("Invalid track choice. Skipping this player.");
+            kart.IsAvailable = true; // Revert kart availability if track selection fails
+            continue;
+        }
+
+        string selectedTrack = _tracks[trackChoice - 1];
+
+        // Simulate race result
+        var raceTime = new Random().Next(30, 300); // Simulate time in seconds
+        string formattedDate = DateTime.Now.ToShortDateString();
+        bool kartReturned = false; // Kart is not returned by default
+
+        // Save the race result to the file
+        string raceResult = $"{kart.Id}#{identifier}#{kart.Name}#{formattedDate}#{raceTime}#{selectedTrack}#{kartReturned}";
+        SaveRaceResult(raceResult);
+
+        // Display the formatted result
+        string playerName = identifier.Split('@')[0]; // Extract the name before the '@' symbol
+        Console.WriteLine($"{playerName} is racing the kart {kart.Name} on {selectedTrack}");
+    }
+}
     }
 
     // Kart class definition
